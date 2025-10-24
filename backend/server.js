@@ -512,7 +512,7 @@ app.get('/api/security-test', (req, res) => {
 
 // Start server
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(` EcoTrack Backend Server Started!`);
   console.log(` Port: ${PORT}`);
   console.log(`Database: Neon PostgreSQL`);
