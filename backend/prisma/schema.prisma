@@ -1,0 +1,86 @@
+// prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  // Relationships
+  activities    Activity[]
+  carbonEntries CarbonEntry[]
+  goals         Goal[]
+  
+  @@map("users")
+}
+
+model Activity {
+  id          Int      @id @default(autoincrement())
+  userId      Int
+  category    String   // transport, food, energy
+  type        String   // car, bus, beef, electricity, etc.
+  amount      Float
+  unit        String   // miles, kg, kWh, etc.
+  description String?
+  date        DateTime @default(now())
+  createdAt   DateTime @default(now())
+  
+  // Relationships
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@map("activities")
+}
+
+model CarbonEntry {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  category  String   // transport, food, energy, shopping
+  emissions Float    // kg CO2
+  date      DateTime @default(now())
+  createdAt DateTime @default(now())
+  
+  // Relationships
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@map("carbon_entries")
+}
+
+model Goal {
+  id               Int      @id @default(autoincrement())
+  userId           Int
+  title            String
+  description      String?
+  targetEmissions  Float
+  currentEmissions Float    @default(0)
+  deadline         DateTime?
+  isCompleted      Boolean  @default(false)
+  createdAt        DateTime @default(now())
+  
+  // Relationships
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@map("goals")
+}
+
+model Tip {
+  id          Int      @id @default(autoincrement())
+  category    String
+  title       String
+  description String
+  impact      String   // low, medium, high
+  savings     Float    // kg CO2 savings
+  difficulty  String   // easy, medium, hard
+  createdAt   DateTime @default(now())
+  
+  @@map("tips")
+}
