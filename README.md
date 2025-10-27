@@ -1,16 +1,58 @@
-# React + Vite
+# 🌱 EcoTrack - Carbon Footprint Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![React](https://img.shields.io/badge/React-18.2.0-blue)
+![Node.js](https://img.shields.io/badge/Node.js-20+-green)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16.0-blue)
+![Prisma](https://img.shields.io/badge/Prisma-ORM-purple)
 
-Currently, two official plugins are available:
+A full-stack web application that helps users track, analyze, and reduce their carbon footprint across transportation, food, and energy consumption.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Live Demo
+- **Frontend:** [Coming Soon - Vercel Deployment]()
+- **Backend API:** [Coming Soon - Cloud Deployment]()
 
-## React Compiler
+## 📋 Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 🔐 Authentication & Security
+- JWT-based authentication with secure token management
+- Password hashing with bcryptjs
+- Rate limiting to prevent brute force attacks
+- Input sanitization and validation
+- Helmet.js security headers
 
-## Expanding the ESLint configuration
+### 📊 Carbon Tracking
+- Real-time carbon emission calculations
+- Multiple categories: Transport, Food, Energy
+- 15+ emission factors with scientific accuracy
+- Historical data tracking and trends
+- Progress visualization and insights
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 💡 User Experience
+- Responsive dashboard with data visualization
+- Goal setting and achievement tracking
+- Personalized eco-tips and recommendations
+- Export functionality for data analysis
+
+## 🛠️ Tech Stack
+
+### Frontend
+- **React 18** with Vite for fast development
+- **Context API** for state management
+- **Tailwind CSS** for responsive design
+- **Axios** for API communication
+- **React Router** for navigation
+
+### Backend
+- **Node.js** with Express.js framework
+- **PostgreSQL** with Prisma ORM
+- **JWT** for authentication
+- **bcryptjs** for password security
+- **Express Rate Limit** for API protection
+
+### Deployment & Infrastructure
+- **Vercel** for frontend hosting
+- **Cloud Platform** for backend services
+- **Neon** for serverless PostgreSQL
+- **GitHub** for version control
+
+## 📁 Project Structure
