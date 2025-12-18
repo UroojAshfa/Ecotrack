@@ -7,7 +7,7 @@
 🌐 **Live Application**: [Deployment pending — but you can still showcase your work]
 Upload a screen recording to YouTube, Loom, or Google Drive, then paste the link below:
 
-👉 Demo Video: [[EcoTrack Demo]](https://www.loom.com/share/your-demo-link-here)
+👉 Demo Video: [[EcoTrack Demo]]([https://www.loom.com/share/your-demo-link-here](https://www.loom.com/share/8aa7b666abe14d3dbafe551eb484c84e))
 
 ## 🧩 1. Project Summary
 
