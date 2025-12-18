@@ -6,6 +6,8 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const rateLimit = require('express-rate-limit');
 const { PrismaClient } = require('@prisma/client');
+const { GeminiService } = require('./services/geminiService');
+
 require('dotenv').config();
 
 const app = express();
@@ -509,6 +511,93 @@ app.get('/api/security-test', (req, res) => {
   });
 });
 
+
+// AI Insights endpoint
+app.post('/api/ai/insights', authenticateToken, async (req, res) => {
+  try {
+    const { timeframe = '30d' } = req.body;
+    const userId = req.user.userId;
+    
+    // Get user activities
+    const activities = await prisma.activity.findMany({
+      where: { 
+        userId: parseInt(userId),
+        date: {
+          gte: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000) // Last 30 days
+        }
+      },
+      orderBy: { date: 'desc' },
+      take: 50 // Limit for AI context
+    });
+    
+    if (activities.length === 0) {
+      return res.json({ 
+        insights: [
+          {
+            title: "Start Tracking to Get Insights",
+            description: "Log your first activities to receive personalized AI-powered carbon reduction tips.",
+            impact: "High",
+            category: "general",
+            savingsPotential: "Varies with usage",
+            actionSteps: ["Add your first transport activity", "Log food consumption", "Track energy usage"]
+          }
+        ],
+        message: "No data yet - these are starter tips"
+      });
+    }
+    
+    const user = await prisma.user.findUnique({
+      where: { id: parseInt(userId) },
+      select: { name: true, email: true }
+    });
+    
+    const aiResponse = await GeminiService.generateCarbonInsights(activities, user);
+    
+    res.json({
+      insights: aiResponse.insights,
+      analyzedActivities: activities.length,
+      timeframe: 'last_30_days'
+    });
+    
+  } catch (error) {
+    console.error('AI insights endpoint error:', error);
+    res.status(500).json({ 
+      error: 'Failed to generate AI insights',
+      fallback: true
+    });
+  }
+});
+
+// AI Prediction endpoint
+app.post('/api/ai/predict', authenticateToken, async (req, res) => {
+  try {
+    const { months = 6 } = req.body;
+    const userId = req.user.userId;
+    
+    const historicalData = await prisma.carbonEntry.findMany({
+      where: { userId: parseInt(userId) },
+      orderBy: { date: 'asc' }
+    });
+    
+    if (historicalData.length < 7) {
+      return res.status(400).json({
+        error: 'Need at least 7 days of data for predictions'
+      });
+    }
+    
+    const prediction = await GeminiService.predictFutureEmissions(historicalData, months);
+    
+    res.json({
+      prediction,
+      dataPoints: historicalData.length,
+      predictionMonths: months
+    });
+    
+  } catch (error) {
+    console.error('AI prediction error:', error);
+    res.status(500).json({ error: 'Prediction failed' });
+  }
+});
 
 // Start server
 const PORT = process.env.PORT || 5000;

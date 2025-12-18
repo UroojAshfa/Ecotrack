@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
     "chart.js": "^4.5.1",
     "express-rate-limit": "^8.1.0",
     "feather-icons": "^4.29.2",

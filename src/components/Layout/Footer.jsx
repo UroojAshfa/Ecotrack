@@ -13,7 +13,8 @@ const Footer = () => {
               Helping individuals and businesses track and reduce their environmental impact since 2023.
             </p>
           </div>
-          {/* ... rest of your footer content from index.html */}
+
+          {/* rest of the footer content from index.html */}
         </div>
         <div className="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm">© 2023 EcoTrack. All rights reserved.</p>

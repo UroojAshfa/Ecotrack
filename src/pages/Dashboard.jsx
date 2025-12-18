@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { tipsAPI, goalsAPI } from '../services/api';
+import AIInsights from '../components/AIInsights'; // Add this import
 
 // Goals Section Component
 const GoalsSection = () => {
@@ -331,7 +332,6 @@ const Dashboard = () => {
         <div className="max-w-3xl mx-auto">
           
           <h1 className="text-4xl md:text-5xl font-roboto font-extrabold text-gray-900 mb-6">
-          {/*<h1 className="text-4xl md:text-5xl font-extrabold font-roboto bg-gradient-to-r from-emerald-500 to-emerald-500 bg-clip-text text-transparent mb-6">*/}
             {isAuthenticated ? `Welcome back, ${displayName}!` : 'Track Your Carbon Footprint'}
           </h1>
           <p className="text-xl text-gray-600 mb-8">
@@ -414,7 +414,14 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Main Dashboard Grid with Goals */}
+        {/* AI Insights Section - New Addition */}
+        {isAuthenticated && (
+          <div className="mb-8">
+            <AIInsights />
+          </div>
+        )}
+
+        {/* Main Dashboard Grid with Goals and Tips */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
           {/* Goals Section - Takes one column */}
           <GoalsSection />
@@ -467,6 +474,73 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
+
+        {/* Demo AI Insights for non-authenticated users */}
+        {!isAuthenticated && (
+          <div className="mb-8">
+            <div className="bg-white rounded-xl shadow-md p-6">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-blue-500 rounded-lg flex items-center justify-center">
+                  <span className="text-white text-lg"></span>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900">Gemini AI Insights</h3>
+                  <p className="text-sm text-gray-600">Personalized carbon reduction tips</p>
+                </div>
+              </div>
+              
+              <div className="space-y-4">
+                <div className="border-l-4 border-purple-500 bg-gradient-to-r from-purple-50 to-white rounded-r-lg p-4">
+                  <div className="flex items-start gap-3">
+                    <div className="flex-shrink-0 w-8 h-8 bg-white rounded-lg flex items-center justify-center shadow-sm">
+                      <span className="text-lg">🚗</span>
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <h4 className="font-semibold text-gray-900">Transport is Your Top Emitter</h4>
+                        <span className="text-xs px-2 py-1 rounded-full border bg-red-100 text-red-800 border-red-300">
+                          High Impact
+                        </span>
+                      </div>
+                      <p className="text-gray-700 text-sm leading-relaxed">
+                        Based on typical usage patterns, transportation contributes the most to carbon footprints. Consider carpooling or using public transportation to reduce emissions.
+                      </p>
+                      <div className="mt-2 flex items-center gap-2">
+                        <span className="text-xs bg-emerald-100 text-emerald-800 px-2 py-1 rounded">
+                          💰 Save up to 30% reduction possible
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="mt-3 pt-3 border-t border-gray-100">
+                    <p className="text-xs font-medium text-gray-600 mb-2">Action Steps:</p>
+                    <ul className="space-y-1">
+                      <li className="flex items-center gap-2 text-sm text-gray-700">
+                        <span className="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>
+                        Try public transport 2 days per week
+                      </li>
+                      <li className="flex items-center gap-2 text-sm text-gray-700">
+                        <span className="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>
+                        Explore carpooling options
+                      </li>
+                      <li className="flex items-center gap-2 text-sm text-gray-700">
+                        <span className="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>
+                        Combine errands to reduce trips
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="mt-6 p-4 bg-blue-50 rounded-lg text-center">
+                <p className="text-blue-800 font-medium">
+                  Sign in to get personalized AI insights based on your actual carbon footprint!
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
       </main>
     </div>
   );
