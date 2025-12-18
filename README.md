@@ -1,16 +1,78 @@
-# React + Vite
+# 🌱 EcoTrack Carbon Footprint Tracker
+### AI-Powered Carbon Emission Tracking with Real-Time Analytics & Personalized Reduction Recommendations
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+### 🌟 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🌐 **Live Application**: [Deployment pending — but you can still showcase your work]
+Upload a screen recording to YouTube, Loom, or Google Drive, then paste the link below:
 
-## React Compiler
+👉 Demo Video: [[EcoTrack Demo]](https://www.loom.com/share/your-demo-link-here)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🧩 1. Project Summary
 
-## Expanding the ESLint configuration
+EcoTrack Carbon Footprint Tracker is an intelligent environmental monitoring platform that automates carbon calculations using AI-driven insights, real-time analytics, and personalized sustainability recommendations. It offers a seamless way to track and reduce environmental impact using modern web technologies + AI intelligence.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📖 2. Overview / Introduction
+
+Modern environmental tracking is manual, complex, and lacks personalization. This project reimagines carbon footprint monitoring using accurate emission calculations, AI-powered insights, and an intuitive user experience.
+
+### 🎯 What Problem Does It Solve?
+
+* Complex carbon calculation formulas
+* Lack of personalized reduction strategies
+* Manual tracking of environmental impact
+* No central platform for sustainability goals
+* Poor UX around environmental data
+
+### 💡 Why This Exists
+
+To demonstrate how AI + Modern Web Stack + Environmental Science can fully automate carbon tracking while keeping everything user-friendly and scientifically accurate.
+
+### 👥 Who Is This For?
+
+* Environmentally conscious individuals
+* Sustainability advocates
+* Eco-friendly businesses
+* Educational institutions
+* Developers evaluating full-stack + AI projects
+
+## ⚙️ 3. Features
+### 🤖 AI-Powered Insights (Google Gemini AI)
+
+* Natural-language carbon analysis
+* Personalized reduction recommendations
+* Intelligent agent that analyzes user patterns
+* Actionable steps with impact ratings
+
+### 📊 Carbon Calculation Engine
+
+* Automated emission calculations
+* Multi-category tracking (Transport, Food, Energy)
+* Historical trend visualization
+* Real-time dashboard analytics
+
+### 💻 Modern Frontend (React + Vite)
+
+* Interactive carbon calculator
+* Real-time dashboard with visualizations
+* Responsive design with Tailwind CSS
+* User-friendly activity logging
+
+### 🛠 Backend API (Node.js / Express)
+
+* RESTful API endpoints
+* Google Gemini AI integration
+* Secure authentication system
+* Ready for serverless deployment
+
+### 🔐 Security & Performance
+
+* JWT authentication with bcrypt
+* Rate limiting & brute force protection
+* Input sanitization & validation
+* Optimized database queries with Prisma
+
+
+## 🛠 4. Installation Instructions
+### Clone the Repository
